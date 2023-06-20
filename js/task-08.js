@@ -1,27 +1,26 @@
 const form = document.querySelector('.login-form');
-const inputs = document.querySelectorAll('input');
 
 form.addEventListener('submit', onSubmitForm);
 
 function onSubmitForm(event) {
     event.preventDefault();
 
-    // console.log(event.currentTarget.elements);
-
-    inputs.forEach(input => {
-        if (input.value === '') {
-        alert('All fields must be filled!');
-    }
-    })
-
     const { email, password } = event.currentTarget.elements;
     const data = {
         email: email.value,
         password: password.value,
     }
+    // console.log(event.currentTarget.elements);
+
+    if (email.value === '' || password.value === '') {
+        alert('All fields must be filled!');
+        return;
+    }
+    
     console.log('data', data);
 
     event.currentTarget.reset();
+    }
 
 
     // 2 variant
@@ -46,4 +45,3 @@ function onSubmitForm(event) {
     //     console.log(value);
     // });
     // console.log(formData);
-}
